@@ -1,0 +1,44 @@
+
+MODKEY|ControlMask,
+
+
+#######dwm-uselessgap
+static const unsigned int gappx     = 6;        /* gap pixel between windows */
+
+
+######## maximize
+{ MODKEY|ControlMask|ShiftMask, XK_h,           togglehorizontalmax, NULL },
+{ MODKEY|ControlMask|ShiftMask, XK_l,           togglehorizontalmax, NULL },
+{ MODKEY|ControlMask|ShiftMask, XK_j,           toggleverticalmax,   NULL },
+{ MODKEY|ControlMask|ShiftMask, XK_k,           toggleverticalmax,   NULL },
+{ MODKEY|ControlMask,           XK_m,           togglemaximize,      {0} },
+
+
+
+
+
+
+######### movestack
+ #include "movestack.c"
+ static Key keys[] = {
+ /* modifier                     key        function        argument */
+ ...
+ { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+ { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+ ...
+
+
+
+#######
+pertag : each workspace has it own layout
+
+#####
+attach bottom : new window is not master
+
+######
+always center : floating window is center
+
+#####
+movestack
+move tiled window
+

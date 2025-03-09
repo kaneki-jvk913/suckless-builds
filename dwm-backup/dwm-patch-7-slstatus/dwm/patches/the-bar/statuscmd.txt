@@ -1,0 +1,49 @@
+Usage
+Both the nosignal version and the dwmblocks version will run their respective shell commands/scripts with the environment variable BUTTON set to the button that was pressed.
+
+With signals
+Apply the statuscmd patch and set the STATUSBAR macro in config.h to the name of the status monitor.
+
+Apply the corresponding statuscmd patch to your status monitor if there is one, or extend the program on your own. Feel free to add patches for other status monitors.
+
+Patching status monitors
+Associate each section with a signal number in the range of 1-31.
+When setting the status text, print each section's respective signal number as a raw byte before its text.
+With the 20241009 patch, printing the raw byte again at the end of block
+output will end the clickable region.
+Create a signal handler:
+void sighandler(int signum, siginfo_t *si, void *ucontext)
+{
+	int signal = signum - SIGRTMIN;
+	int button = si->si_value.sival_int; /* if button is zero, the signal is not from a button press */
+	... /* do whatever you want */
+}
+Register the signal handler for each section in the following way, with 'signal' being the same signal from the first step:
+struct sigaction sa = { .sa_sigaction = sighandler, .sa_flags = SA_SIGINFO };
+sigaction(SIGRTMIN+signal, &sa, NULL);
+Without signals
+Apply the statuscmd-nosignal patch and fill the statuscmds array in config.h with StatusCmd structs, which take a shell command string and an integer identifier.
+
+When setting the status, print the integer identifier as a raw byte before its respective text.
+
+For example, with statuscmds defined as such:
+
+static const StatusCmd statuscmds[] = {
+	{ "volume",  1 },
+	{ "cpu",     2 },
+	{ "battery", 3 },
+};
+And root name set like this:
+
+xsetroot -name "$(printf '\x01 Volume \x01|\x02 CPU \x02|\x03 Battery\x03')"
+Clicking on 'Volume |' would run volume, clicking on ' CPU |' would run cpu and clicking on ' Battery' would run battery.
+
+Example
+A script run from dwm or dwmblocks with this patch might look like this:
+###########################################################################3
+#!/bin/sh
+case $BUTTON in
+	1) notify-send "CPU usage" "$(ps axch -o cmd,%cpu --sort=-%cpu | head)" ;;
+	3) st -e htop ;;
+esac
+printf '\x01Click Me!\x01'
