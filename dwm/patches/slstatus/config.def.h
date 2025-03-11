@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+
 /* interval between updates (in ms) */
 const unsigned int interval = 1000;
 
@@ -68,16 +69,16 @@ static const struct arg args[] = {
 
 
    //    {wifi_essid, "   %s |", "wlan0"},
-       {run_command, " [   %s ] ",  "/home/ayoub/.config/dwm/network-speed.py" },
+       {run_command, " [   %s ]",  "/home/ayoub/.dwm/network-speed.py" },
 
-       { cpu_perc,    "[   %s%% ] ",    NULL },
-       { ram_used,    "[   %s ] ",    NULL },       
+       { cpu_perc,    " [   %s%% ]",    NULL },
+       { ram_used,    " [   %s ]",    NULL },       
 
 
-       {battery_perc, "[   %s% ] ",   "BAT1"},
-       {run_command,  "[   %s%% ] ",   "wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'"},
+       {battery_perc, " [   %s% ]",   "BAT1"},
+       {run_command,  " [   %s%% ]",   "wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2 * 100)}'"},
    
-       { datetime,    "[ %s ] ",    "%F %T" }, 
+       { datetime,    " [ %s ] ",    "%F %T" }, 
 
 
 };
