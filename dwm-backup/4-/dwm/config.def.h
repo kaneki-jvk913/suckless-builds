@@ -82,13 +82,17 @@ static const Key keys[] = {
    //switch focus window	
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	
+	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } }, 
+        { MODKEY,                       XK_Down,   focusstack,     {.i = +1 } }, 
+
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	
   //resize window
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
+
+ 
 	
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },

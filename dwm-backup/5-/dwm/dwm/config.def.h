@@ -74,10 +74,10 @@ static const Key keys[] = {
         { MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
         { MODKEY,                       XK_r,      spawn,          SHCMD("/home/ayoub/.config/rofi/launchers/type-6/launcher.sh") }, 
         { MODKEY,                       XK_l,      spawn,          SHCMD("/home/ayoub/.config/rofi/custom/power-dwm/powermenu.sh") },  
-    //	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("flameshot screen -p Pictures/") },
-    	{ MODKEY,                       XK_p,      spawn,          SHCMD("/home/ayoub/.dwm/run-recent.sh") },
+
 
 	
    //switch focus window	

@@ -74,19 +74,15 @@ static const Key keys[] = {
         { MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
         { MODKEY,                       XK_r,      spawn,          SHCMD("/home/ayoub/.config/rofi/launchers/type-6/launcher.sh") }, 
         { MODKEY,                       XK_l,      spawn,          SHCMD("/home/ayoub/.config/rofi/custom/power-dwm/powermenu.sh") },  
-    //	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_n,      spawn,          SHCMD("flameshot screen -p Pictures/") },
-    	{ MODKEY,                       XK_p,      spawn,          SHCMD("/home/ayoub/.dwm/run-recent.sh") },
+	
 
 	
    //switch focus window	
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } }, 
-        { MODKEY,                       XK_Down,   focusstack,     {.i = +1 } }, 
-
-   //split
+	
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	
@@ -94,14 +90,17 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
- 
+  //move stack window
+{ MODKEY|ControlMask, XK_Up,    focusstack,    {.i = -1} }, // Move window up in the stack
+{ MODKEY|ControlMask, XK_Down,  focusstack,    {.i = +1} }, // Move window down in the stack
+
 	
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	
