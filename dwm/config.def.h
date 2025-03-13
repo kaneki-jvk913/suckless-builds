@@ -69,7 +69,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-        { MODKEY,                       XK_Return, spawn,          SHCMD("st") },
+        { MODKEY,                       XK_Return, spawn,          SHCMD("tabbed -r 2 st -w ''") },
         { MODKEY,                       XK_e,      spawn,          SHCMD("nautilus") },
         { MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
         { MODKEY,                       XK_r,      spawn,          SHCMD("/home/ayoub/.config/rofi/launchers/type-6/launcher.sh") }, 
