@@ -47,7 +47,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
-    //	{ "><>",      NULL },    /* no layout function means floating behavior */
+   //   { "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -66,11 +66,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "kitty", "-T", scratchpadname, NULL };
+//static const char *scratchpadcmd[] = {"kitty", "--class", scratchpadname, "--config", "/home/ayoub/.config/kitty/scratchpad-kitty.conf", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
         { MODKEY,                       XK_Return, spawn,          SHCMD("kitty") },
-  //    { MODKEY,                       XK_Return, spawn,          SHCMD("tabbed -r 2 st -w ''") },
+     //	{ MODKEY,                       XK_Return, spawn,          SHCMD("tabbed -r 2 st -w ''") },    
         { MODKEY,                       XK_e,      spawn,          SHCMD("nautilus") },
         { MODKEY,                       XK_b,      spawn,          SHCMD("brave") },
         { MODKEY,                       XK_r,      spawn,          SHCMD("/home/ayoub/.config/rofi/launchers/type-6/launcher.sh") }, 
@@ -95,13 +97,12 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Left,   setmfact,       {.f = -0.05} },
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
- 
-	
+ 	
 	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 //	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
@@ -145,7 +146,13 @@ static const Key keys[] = {
     { MODKEY,                       XK_equal,  setgaps,        {.i = +1 } }, // Increase gaps
     { MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } }, // Reset gaps to 0
 
+    // dwm-scratchpad
 
+
+       	{ MODKEY,                       XK_s,  togglescratch,  {.v = scratchpadcmd } },
+
+	// dwm-actualfullscreen
+	{ MODKEY,             XK_f,      togglefullscr,  {0} },
 
 };
 
@@ -180,4 +187,8 @@ static const Button buttons[] = {
 
 
 /* patches */
- 
+
+// dwm-scratchpad
+
+
+
