@@ -81,7 +81,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_n,      spawn,          SHCMD("flameshot screen -p Pictures/") },
     	{ MODKEY,                       XK_p,      spawn,          SHCMD("/home/ayoub/.dwm/run-recent.sh") },
-
+        { MODKEY,                       XK_z,      spawn,          SHCMD("emacsclient -c -a 'emacs'") },
 	
    //switch focus window	
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
@@ -98,7 +98,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right,  setmfact,       {.f = +0.05} },
 
  	
-	{ MODKEY,                       XK_z,      zoom,           {0} },
+	{ MODKEY,                       XK_m,      zoom,           {0} }, // make window master 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
